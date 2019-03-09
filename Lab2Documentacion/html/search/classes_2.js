@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['registrados',['Registrados',['../class_inicio_1_1_registrados.html',1,'Inicio']]],
-  ['registro',['Registro',['../class_inicio_1_1_registro.html',1,'Inicio']]]
+  ['registrados',['Registrados',['../classInicio_1_1Registrados.html',1,'Inicio']]],
+  ['registro',['Registro',['../classInicio_1_1Registro.html',1,'Inicio']]]
 ];
