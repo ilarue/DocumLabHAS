@@ -56,7 +56,17 @@ if ((val1 > val2) && (val1 > val3))
 // the query.
 ```
 
-> No cree bloques con formato de asteriscos alrededor de comentarios.
+> No cree bloques con formato de asteriscos alrededor de comentarios; por ejemplo:
+
+~~~c#
+/*********************************************************
+ * funcion: long int calculoMemoriaMaxima(int x, int y); * 
+ *********************************************************/
+ long int calculoMemoriaMaxima(int x, int y)
+ {
+     return x * y;
+ }
+~~~
 
 ## ***Convenciones de lenguaje***
 > En las secciones siguientes se describen las prácticas que sigue el equipo C# para preparar las muestras y ejemplos de código.
