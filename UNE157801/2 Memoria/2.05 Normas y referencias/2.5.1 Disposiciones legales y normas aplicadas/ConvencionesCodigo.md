@@ -1,6 +1,6 @@
 # Convenciones de código de C# 
 
-##Guía de programación de 'C#'
+## Guía de programación de C#
 > 20/07/2015
 
 > Tiempo de lectura: 13 minutos
@@ -19,7 +19,7 @@
 
 > Microsoft usa las instrucciones de este tema para desarrollar ejemplos y documentación.
 
-##***Convenciones de nomenclatura***
+## ***Convenciones de nomenclatura***
 
 > En ejemplos breves que no incluyen directivas using, use calificaciones de espacio de nombres. Si sabe que un espacio de nombres se importa en un proyecto de forma predeterminada, no es necesario completar los nombres de ese espacio de nombres. Los nombres completos pueden partirse después de un punto (.) si son demasiado largos para una sola línea, como se muestra en el ejemplo siguiente.
 C#
@@ -30,7 +30,7 @@ var currentPerformanceCounterCategory = new System.Diagnostics.
 ```
     
 > No es necesario cambiar los nombres de objetos que se crearon con las herramientas del diseñador de Visual Studio para que se ajusten a otras directrices.
-##***Convenciones de diseño***
+## ***Convenciones de diseño***
 > Un buen diseño utiliza un formato que destaque la estructura del código y haga que el código sea más fácil de leer. Las muestras y ejemplos de Microsoft cumplen las convenciones siguientes:
 > - Utilice la configuración del Editor de código predeterminada (sangría automática, sangrías de 4 caracteres, tabulaciones guardadas como espacios). Para obtener más información, vea Opciones, editor de texto, C#, formato.
 > - Escriba solo una instrucción por línea.
@@ -45,7 +45,7 @@ if ((val1 > val2) && (val1 > val3))
 }
 ```
 
-##***Convenciones de los comentarios***
+## ***Convenciones de los comentarios***
 
 > Coloque el comentario en una línea independiente, no al final de una línea de código.
 > Comience el texto del comentario con una letra mayúscula.
@@ -58,9 +58,10 @@ if ((val1 > val2) && (val1 > val3))
 
 > No cree bloques con formato de asteriscos alrededor de comentarios.
 
-##***Convenciones de lenguaje***
+## ***Convenciones de lenguaje***
 > En las secciones siguientes se describen las prácticas que sigue el equipo C# para preparar las muestras y ejemplos de código.
-> #####***String (Tipo de datos)***
+
+> #### ***String (Tipo de datos)***
 > Use interpolación de cadenas para concatenar cadenas cortas, como se muestra en el código siguiente.
 ```
 string displayName = $"{nameList[n].LastName}, {nameList[n].FirstName}";
@@ -77,7 +78,7 @@ for (var i = 0; i < 10000; i++)
 //Console.WriteLine("tra" + manyPhrases);
 ```
 
-> #####***Variables locales con asignación implícita de tipos***
+> ##### ***Variables locales con asignación implícita de tipos***
 
 > Use tipos implícitos para las variables locales cuando el tipo de la variable sea obvio desde el lado derecho de la asignación, o cuando el tipo exacto no sea importante.
 ```
@@ -144,7 +145,7 @@ vowels3[1] = "e";
 // And so on.
 ```
 
-> #####***Delegados***
+> ##### ***Delegados***
 > Utilice sintaxis concisa para crear instancias de un tipo de delegado.
 ```
 // First, in class Program, define the delegate type and a method that  
@@ -163,7 +164,7 @@ Del exampleDel2 = DelMethod;
 Del exampleDel1 = new Del(DelMethod);
 ```
 
-> #####***Instrucciones try-catch y using en el control de excepciones***
+> ##### ***Instrucciones try-catch y using en el control de excepciones***
 > Use una instrucción try-catch en la mayoría de casos de control de excepciones.
 ```
 static string GetValueFromArray(string[] array, int index)
@@ -202,7 +203,7 @@ using (Font font2 = new Font("Arial", 10.0f))
 }
 ```
 
-> #####***Operadores && y ||***
+> ##### ***Operadores && y ||***
 > Para evitar excepciones y aumentar el rendimiento omitiendo las comparaciones innecesarias, use && en lugar de & y || en lugar de | cuando realice comparaciones, como se muestra en el ejemplo siguiente.
 ```
 Console.Write("Enter a dividend: ");
@@ -223,7 +224,7 @@ else
     Console.WriteLine("Attempted division by 0 ends up here.");
 }
 ```
-> #####***New (Operador)***
+> ##### ***New (Operador)***
 
 > Utilice la forma concisa de la creación de instancias de objeto con tipos implícitos, como se muestra en la siguiente declaración.
 ```
@@ -248,7 +249,7 @@ instance4.Location = "Redmond";
 instance4.Age = 2.3;
 ```
 
-> #####***Control de eventos***
+> ##### ***Control de eventos***
 >Si va a definir un controlador de eventos que no es necesario quitar más tarde, utilice una expresión lambda.
 ```
 public Form2()
@@ -271,11 +272,11 @@ void Form1_Click(object sender, EventArgs e)
 }
 ```
 
-> #####***Miembros estáticos***
+> ##### ***Miembros estáticos***
 
 > Llame a miembros estáticos con el nombre de clase: ClassName.StaticMember. Esta práctica hace que el código sea más legible al clarificar el acceso estático. No califique un miembro estático definido en una clase base con el nombre de una clase derivada. Mientras el código se compila, su legibilidad se presta a confusión, y puede interrumpirse en el futuro si se agrega a un miembro estático con el mismo nombre a la clase derivada.
 
-> #####***Consultas LINQ***
+> ##### ***Consultas LINQ***
 
 > Utilice nombres descriptivos para las variables de consulta. En el ejemplo siguiente, se utiliza seattleCustomers para los clientes que se encuentran en Seattle.
 ```
@@ -323,7 +324,7 @@ var scoreQuery = from student in students
                  select new { Last = student.LastName, score };
 ```
 
-##***Seguridad***
+## ***Seguridad***
 > Siga las instrucciones de Instrucciones de codificación segura.
 >La seguridad basada en pruebas y la seguridad de acceso por código ofrecen mecanismos explícitos y muy eficaces para implementar la seguridad. Mayoría del código de aplicación puede usar simplemente la infraestructura implementada por .NET. En algunos casos, se requiere la seguridad específica de aplicación adicional, creada ampliando el sistema de seguridad o mediante nuevos métodos ad hoc.
 
@@ -331,7 +332,7 @@ var scoreQuery = from student in students
 
 > Esta información general describe las diferentes formas en que se puede diseñar código para que funcione con el sistema de seguridad.
 
->#####***Protección de acceso a los recursos***
+>##### ***Protección de acceso a los recursos***
 
 > Al diseñar y escribir el código, debe proteger y limitar el acceso del código a los recursos, especialmente cuando se usa o se invoca código de origen desconocido. Por lo tanto, tenga en cuenta las siguientes técnicas para asegurarse de que el código sea seguro:
 >- No utilice la seguridad de acceso del código (CAS).
@@ -347,17 +348,17 @@ var scoreQuery = from student in students
 >- Usuarios y permisos de sistema operativo (SO)
 >- Contenedores de Hyper-V
 
-####***Código neutral respecto a seguridad***
+#### ***Código neutral respecto a seguridad***
 > El código neutral respecto a la seguridad no hace nada explícito con el sistema de seguridad. Se ejecuta con los permisos que recibe. Aunque las aplicaciones que no pudieron detectar las excepciones de seguridad asociadas a operaciones protegidas (como el uso de archivos, redes etc.) pueden producir una excepción no controlada, código neutral respecto a seguridad todavía aprovecha las ventajas de las tecnologías de seguridad de .NET .
 Una biblioteca neutral respecto a la seguridad tiene características especiales que debe conocer. Suponga que la biblioteca ofrece elementos de la API que usan archivos o llamar a código no administrado. Si el código no tiene el permiso correspondiente, no se ejecutará como se describe. Sin embargo, incluso si el código tiene el permiso, cualquier código de aplicación que le llame debe tener el mismo permiso para poder funcionar. Si el código de llamada no dispone del permiso adecuado, un SecurityException aparece como resultado del recorrido de pila de seguridad de acceso de código.
 
-####***Código de aplicación que no es un componente reutilizable***
+#### ***Código de aplicación que no es un componente reutilizable***
 > Si el código forma parte de una aplicación que no llamará otro código, la seguridad es sencilla y codificación especial no será necesario. Sin embargo, recuerde que el código malintencionado puede llamar a su código. Aunque la seguridad de acceso a código puede evitar que código malintencionado obtenga acceso a recursos, dicho código todavía podría leer valores de sus campos o propiedades que puedan contener información confidencial.
 Además, si el código acepta la entrada del usuario desde Internet o de otras fuentes no confiables, debe tener cuidado con la entrada malintencionada.
 
-####***Contenedor administrado en la implementación de código nativo***
+#### ***Contenedor administrado en la implementación de código nativo***
 > Normalmente en este escenario se implementa alguna funcionalidad de utilidad en código nativo que quiere que esté disponible para código administrado. Los contenedores administrados son sencillos de escribir mediante la invocación de plataforma o interoperabilidad COM. Sin embargo, si lo hace, los llamadores de los contenedores deben tener derechos de código no administrado para ser correctos. Con la directiva predeterminada, esto significa que el código descargado de una intranet o Internet no funcionará con los contenedores.
 En lugar de darle derechos de código no administrado a todas las aplicaciones que usan estos contenedores, es mejor dar estos derechos únicamente al código del contenedor. Si la funcionalidad subyacente no expone ningún recurso y la implementación es igual de segura, el contenedor solo necesita imponer sus derechos, lo que permite a cualquier código llamar a través de él. Cuando se trate de recursos, la codificación de seguridad debe ser la mismo que el caso de código de biblioteca descrito en la siguiente sección. Dado que el contenedor puede exponer a los llamadores a esos recursos, se necesita una cuidadosa comprobación de la seguridad del código nativo, lo que es responsabilidad del contenedor.
 
-####***Código de biblioteca que expone recursos protegidos***
+#### ***Código de biblioteca que expone recursos protegidos***
 > El siguiente enfoque es más eficaz y, por tanto, potencialmente peligroso (si se realiza incorrectamente) para la codificación de seguridad: la biblioteca actúa como una interfaz para que otro código tener acceso a determinados recursos que de lo contrario no disponibles, tal y como las clases de .NET aplican permisos para los recursos que usan. Siempre que exponga un recurso, su código debe requerir primero el permiso adecuado para el recurso (es decir, debe realizar una comprobación de seguridad) y luego declarar sus derechos para llevar a cabo la operación real.
