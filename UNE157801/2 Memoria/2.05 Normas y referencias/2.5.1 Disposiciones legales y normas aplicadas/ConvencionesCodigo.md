@@ -1,6 +1,6 @@
 # Convenciones de código de C# 
 
-##(Guía de programación de C#)
+##Guía de programación de 'C#'
 > 20/07/2015
 
 > Tiempo de lectura: 13 minutos
