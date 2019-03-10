@@ -131,7 +131,8 @@ Console.WriteLine();
 
 > ***Tipo de datos sin signo***
 > En general, utilice int en lugar de tipos sin signo. El uso de int es común en todo C#, y es más fácil interactuar con otras bibliotecas cuando se usa int.
-> #####***Matrices***
+
+> ##### ***Matrices***
 > Utilice sintaxis concisa para inicializar las matrices en la línea de declaración.
 ```
 // Preferred syntax. Note that you cannot use var here instead of string[].
