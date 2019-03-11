@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['login',['Login',['../classInicio_1_1Login.html',1,'Inicio']]]
+  ['estadisticas',['Estadisticas',['../classInicio_1_1Profesor_1_1Estadisticas.html',1,'Inicio::Profesor']]]
 ];

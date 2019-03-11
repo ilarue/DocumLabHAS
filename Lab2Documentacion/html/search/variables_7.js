@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['table1',['Table1',['../classInicio_1_1Registrados.html#a0c8cbd7625175b47e930f927da038acc',1,'Inicio::Registrados']]],
-  ['textbox1',['TextBox1',['../classInicio_1_1CambiarPassword.html#ab827a758058e29a7846579183e4cbcea',1,'Inicio.CambiarPassword.TextBox1()'],['../classInicio_1_1Registrados.html#a2ec529c41bccbe1d45b53e29aad8d1f4',1,'Inicio.Registrados.TextBox1()'],['../classInicio_1_1Registro.html#ab767617adc8dcd13a78c70824d55eb24',1,'Inicio.Registro.TextBox1()']]],
-  ['textbox2',['TextBox2',['../classInicio_1_1CambiarPassword.html#a7eeeb21567b9f20fcb890fbffc4146f4',1,'Inicio.CambiarPassword.TextBox2()'],['../classInicio_1_1Login.html#ac99495a6fbd78cbf118b7c058815e9f2',1,'Inicio.Login.TextBox2()'],['../classInicio_1_1Registrados.html#a14706b4c2eeec2fe1d93f7d0ae00993c',1,'Inicio.Registrados.TextBox2()'],['../classInicio_1_1Registro.html#a24be4248d4791f6b323568f814f5e5c2',1,'Inicio.Registro.TextBox2()']]],
-  ['textbox3',['TextBox3',['../classInicio_1_1CambiarPassword.html#affa43c3fb9f3daacfb67965c2c50466f',1,'Inicio.CambiarPassword.TextBox3()'],['../classInicio_1_1Login.html#af3c872110454773d5d53d83c27e6ccb6',1,'Inicio.Login.TextBox3()'],['../classInicio_1_1Registrados.html#a42dd2c03767d9a49a113c1c4e864d790',1,'Inicio.Registrados.TextBox3()'],['../classInicio_1_1Registro.html#adc45c7cdfd1ee0e80f517f1bb9e827ff',1,'Inicio.Registro.TextBox3()']]],
-  ['textbox4',['TextBox4',['../classInicio_1_1CambiarPassword.html#a9365f80de4f65ec031a704d80d0b5c51',1,'Inicio.CambiarPassword.TextBox4()'],['../classInicio_1_1Registro.html#a835108d17c8690d089f9ee129b2ff7f3',1,'Inicio.Registro.TextBox4()']]],
-  ['textbox5',['TextBox5',['../classInicio_1_1CambiarPassword.html#a852585bbaa846d9076125c13ca2ad786',1,'Inicio.CambiarPassword.TextBox5()'],['../classInicio_1_1Registro.html#a9bc70ac4aacbc0573d097586b9663f28',1,'Inicio.Registro.TextBox5()']]]
+  ['image1',['Image1',['../classInicio_1_1Profesor_1_1Estadisticas.html#a6193bfaaffbaa9eeec1a7e4e8387f077',1,'Inicio::Profesor::Estadisticas']]]
 ];

@@ -68,6 +68,13 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 \begin{DoxyCompactList}\small\item\em Control Label8. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\subsection{Descripción detallada}
+
+
+Definición en la línea 15 del archivo Registro.\+aspx.\+cs.
+
+
+
 \subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classInicio_1_1Registro_a5fd08d11649d5319490065cdf317cdd0}\label{classInicio_1_1Registro_a5fd08d11649d5319490065cdf317cdd0}} 
 \index{Inicio.Registro@{Inicio.Registro}!Button1\_Click@{Button1\_Click}}
@@ -75,18 +82,106 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 \subsubsection{\texorpdfstring{Button1\_Click()}{Button1\_Click()}}
 {\footnotesize\ttfamily void Inicio.\+Registro.\+Button1\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 27 del archivo Registro.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28         \{}
+\DoxyCodeLine{29             Random rnd = \textcolor{keyword}{new} Random();}
+\DoxyCodeLine{30             \textcolor{keywordtype}{int} NumConf = rnd.Next(1000000, 9000000);}
+\DoxyCodeLine{31             \textcolor{keywordtype}{string} email = \mbox{\hyperlink{classInicio_1_1Registro_ab767617adc8dcd13a78c70824d55eb24}{TextBox1}}.Text;}
+\DoxyCodeLine{32             \textcolor{keywordtype}{string} nombre = \mbox{\hyperlink{classInicio_1_1Registro_a24be4248d4791f6b323568f814f5e5c2}{TextBox2}}.Text;}
+\DoxyCodeLine{33             \textcolor{keywordtype}{string} apellidos = \mbox{\hyperlink{classInicio_1_1Registro_adc45c7cdfd1ee0e80f517f1bb9e827ff}{TextBox3}}.Text;}
+\DoxyCodeLine{34             \textcolor{keywordtype}{string} pass = \mbox{\hyperlink{classInicio_1_1Registro_a835108d17c8690d089f9ee129b2ff7f3}{TextBox4}}.Text;}
+\DoxyCodeLine{35             \textcolor{keywordtype}{string} tipo = \mbox{\hyperlink{classInicio_1_1Registro_a6a93f0b66e0c307a8f53722f3f41ce91}{RadioButtonList1}}.Text;}
+\DoxyCodeLine{36             \textcolor{keywordtype}{int} confirmado = 0;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38             AccesoDatos paraConexion = \textcolor{keyword}{new} AccesoDatos();}
+\DoxyCodeLine{39             SqlConnection conexionDesdeClase = paraConexion.conexionSql();}
+\DoxyCodeLine{40             }
+\DoxyCodeLine{41             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{42             \{}
+\DoxyCodeLine{43                 \textcolor{keywordtype}{string} query = \textcolor{stringliteral}{"INSERT INTO Usuarios (email,nombre,apellidos,pass,numconfir,confirmado, tipo) VALUES ('"} + email + \textcolor{stringliteral}{"', '"} + nombre + \textcolor{stringliteral}{"','"} + apellidos + \textcolor{stringliteral}{"', '"} + pass + \textcolor{stringliteral}{"',"} + NumConf + \textcolor{stringliteral}{","} + confirmado + \textcolor{stringliteral}{" , '"} + tipo + \textcolor{stringliteral}{"')"};}
+\DoxyCodeLine{44                 SqlCommand comando = \textcolor{keyword}{new} SqlCommand(query, conexionDesdeClase);}
+\DoxyCodeLine{45                 \textcolor{keywordtype}{int} numReg = comando.ExecuteNonQuery();}
+\DoxyCodeLine{46                 \mbox{\hyperlink{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}{Label7}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{47                 \mbox{\hyperlink{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}{Label7}}.Text = numReg.ToString() + \textcolor{stringliteral}{" registro(s) insertado(s) en la base de datos. Se ha enviado un email para confirmar el registro."};}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{try}}
+\DoxyCodeLine{49                 \{}
+\DoxyCodeLine{50                     ClassEmail Cr = \textcolor{keyword}{new} ClassEmail();}
+\DoxyCodeLine{51                     MailMessage mnsj = \textcolor{keyword}{new} MailMessage();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53                     mnsj.Subject = \textcolor{stringliteral}{"Confirmar registro"};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55                     mnsj.To.Add(\textcolor{keyword}{new} MailAddress(email));}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57                     mnsj.From = \textcolor{keyword}{new} MailAddress(\textcolor{stringliteral}{"pruete001@ikasle.ehu.eus"}, \textcolor{stringliteral}{"Pilartxo Ruete"});}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59                     mnsj.Body =  \textcolor{stringliteral}{"Para validar el registro pulse el siguiente enlace: "} + Constantes.EnvioEmailConfir + email+\textcolor{stringliteral}{"\&numconf="}+NumConf+\textcolor{stringliteral}{""} ;}
+\DoxyCodeLine{60                     \textcolor{comment}{/* Enviar */}}
+\DoxyCodeLine{61                     Cr.MandarCorreo(mnsj);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63                     \mbox{\hyperlink{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}{Label8}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{64                     \mbox{\hyperlink{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}{Label8}}.Text = \textcolor{stringliteral}{"El Mail se ha Enviado Correctamente."};}
+\DoxyCodeLine{65                     \mbox{\hyperlink{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}{HyperLink1}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{66                     \mbox{\hyperlink{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}{HyperLink1}}.NavigateUrl = Constantes.EnvioEmailConfir + email + \textcolor{stringliteral}{"\&numconf="} + NumConf + \textcolor{stringliteral}{""};}
+\DoxyCodeLine{67                     \mbox{\hyperlink{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}{HyperLink1}}.Text = \textcolor{stringliteral}{"También puede validar su registro desde aquí"};}
+\DoxyCodeLine{68                 \}}
+\DoxyCodeLine{69                 \textcolor{keywordflow}{catch} (Exception exc)}
+\DoxyCodeLine{70                 \{}
+\DoxyCodeLine{71                     \mbox{\hyperlink{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}{Label8}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{72                     \mbox{\hyperlink{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}{Label8}}.Text = \textcolor{stringliteral}{"Ha habido algún problema con el envio de email "} + exc.ToString();}
+\DoxyCodeLine{73                 \}}
+\DoxyCodeLine{74             \}\textcolor{keywordflow}{catch} (Exception ex)}
+\DoxyCodeLine{75                 \{}
+\DoxyCodeLine{76                    \mbox{\hyperlink{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}{Label7}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{77                    \mbox{\hyperlink{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}{Label7}}.Text = \textcolor{stringliteral}{"Este usuario no ha podido registrarse "} + ex.ToString();}
+\DoxyCodeLine{78                 \}}
+\DoxyCodeLine{79                  conexionDesdeClase.Close();}
+\DoxyCodeLine{80             }
+\DoxyCodeLine{81             \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Registro.\+Hyper\+Link1, Inicio.\+Registro.\+Label7, Inicio.\+Registro.\+Label8, Inicio.\+Registro.\+Radio\+Button\+List1, Inicio.\+Registro.\+Text\+Box1, Inicio.\+Registro.\+Text\+Box2, Inicio.\+Registro.\+Text\+Box3 y Inicio.\+Registro.\+Text\+Box4.
+
 \mbox{\Hypertarget{classInicio_1_1Registro_a7208153fb65c746caeeadda5c34b96a7}\label{classInicio_1_1Registro_a7208153fb65c746caeeadda5c34b96a7}} 
 \index{Inicio.Registro@{Inicio.Registro}!Page\_Load@{Page\_Load}}
 \index{Page\_Load@{Page\_Load}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Page\_Load()}{Page\_Load()}}
 {\footnotesize\ttfamily void Inicio.\+Registro.\+Page\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 17 del archivo Registro.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18         \{}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{classInicio_1_1Registro_a3622e0de22647c232c2d664a90cb9798}\label{classInicio_1_1Registro_a3622e0de22647c232c2d664a90cb9798}} 
 \index{Inicio.Registro@{Inicio.Registro}!RadioButtonList1\_SelectedIndexChanged@{RadioButtonList1\_SelectedIndexChanged}}
 \index{RadioButtonList1\_SelectedIndexChanged@{RadioButtonList1\_SelectedIndexChanged}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RadioButtonList1\_SelectedIndexChanged()}{RadioButtonList1\_SelectedIndexChanged()}}
 {\footnotesize\ttfamily void Inicio.\+Registro.\+Radio\+Button\+List1\+\_\+\+Selected\+Index\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 83 del archivo Registro.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86         \}}
+
+\end{DoxyCode}
 
 
 \subsection{Documentación de los datos miembro}
@@ -100,7 +195,11 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 
 Control Button1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_abb680432cdd29ebb5f813036c644dadc}\label{classInicio_1_1Registro_abb680432cdd29ebb5f813036c644dadc}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 202 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_abb680432cdd29ebb5f813036c644dadc}\label{classInicio_1_1Registro_abb680432cdd29ebb5f813036c644dadc}} 
 \index{Inicio.Registro@{Inicio.Registro}!CompareValidator2@{CompareValidator2}}
 \index{CompareValidator2@{CompareValidator2}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{CompareValidator2}{CompareValidator2}}
@@ -110,7 +209,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Compare\+Validator2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a0b8d260039acc63632a758544652ea24}\label{classInicio_1_1Registro_a0b8d260039acc63632a758544652ea24}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 175 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a0b8d260039acc63632a758544652ea24}\label{classInicio_1_1Registro_a0b8d260039acc63632a758544652ea24}} 
 \index{Inicio.Registro@{Inicio.Registro}!form1@{form1}}
 \index{form1@{form1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{form1}{form1}}
@@ -120,7 +223,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control form1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}\label{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 22 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}\label{classInicio_1_1Registro_aa4f71bea88748ad5dfc036a400cb4537}} 
 \index{Inicio.Registro@{Inicio.Registro}!HyperLink1@{HyperLink1}}
 \index{HyperLink1@{HyperLink1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{HyperLink1}{HyperLink1}}
@@ -130,7 +237,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Hyper\+Link1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a4ec239a90d4abd7bfd75de6f88d318c9}\label{classInicio_1_1Registro_a4ec239a90d4abd7bfd75de6f88d318c9}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 220 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a4ec239a90d4abd7bfd75de6f88d318c9}\label{classInicio_1_1Registro_a4ec239a90d4abd7bfd75de6f88d318c9}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label1@{Label1}}
 \index{Label1@{Label1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label1}{Label1}}
@@ -140,7 +255,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_ae7b4e658b3d377fe9acc4b4930616dae}\label{classInicio_1_1Registro_ae7b4e658b3d377fe9acc4b4930616dae}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 31 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_ae7b4e658b3d377fe9acc4b4930616dae}\label{classInicio_1_1Registro_ae7b4e658b3d377fe9acc4b4930616dae}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label2@{Label2}}
 \index{Label2@{Label2}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label2}{Label2}}
@@ -150,7 +269,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_ae363d31acf3834211c8e17996e39782f}\label{classInicio_1_1Registro_ae363d31acf3834211c8e17996e39782f}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 67 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_ae363d31acf3834211c8e17996e39782f}\label{classInicio_1_1Registro_ae363d31acf3834211c8e17996e39782f}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label3@{Label3}}
 \index{Label3@{Label3}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label3}{Label3}}
@@ -160,7 +283,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label3. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a0cb8176c99e6ad87d5f77896e1aaf5d1}\label{classInicio_1_1Registro_a0cb8176c99e6ad87d5f77896e1aaf5d1}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 94 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a0cb8176c99e6ad87d5f77896e1aaf5d1}\label{classInicio_1_1Registro_a0cb8176c99e6ad87d5f77896e1aaf5d1}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label4@{Label4}}
 \index{Label4@{Label4}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label4}{Label4}}
@@ -170,7 +297,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label4. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_abe5ff1ad9dfeb25a9e673175b1aa828f}\label{classInicio_1_1Registro_abe5ff1ad9dfeb25a9e673175b1aa828f}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 121 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_abe5ff1ad9dfeb25a9e673175b1aa828f}\label{classInicio_1_1Registro_abe5ff1ad9dfeb25a9e673175b1aa828f}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label5@{Label5}}
 \index{Label5@{Label5}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label5}{Label5}}
@@ -180,7 +311,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label5. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a1f4d81dd35af2a53cf1df120b4f9b383}\label{classInicio_1_1Registro_a1f4d81dd35af2a53cf1df120b4f9b383}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 148 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a1f4d81dd35af2a53cf1df120b4f9b383}\label{classInicio_1_1Registro_a1f4d81dd35af2a53cf1df120b4f9b383}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label6@{Label6}}
 \index{Label6@{Label6}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label6}{Label6}}
@@ -190,7 +325,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label6. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}\label{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 184 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}\label{classInicio_1_1Registro_a1f3fd3c1774cb311690a4246ba5aca66}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label7@{Label7}}
 \index{Label7@{Label7}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label7}{Label7}}
@@ -200,7 +339,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label7. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}\label{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 211 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}\label{classInicio_1_1Registro_a8f64d7bc53c3f17751f32a57cef78ddb}} 
 \index{Inicio.Registro@{Inicio.Registro}!Label8@{Label8}}
 \index{Label8@{Label8}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{Label8}{Label8}}
@@ -210,7 +357,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label8. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a6a93f0b66e0c307a8f53722f3f41ce91}\label{classInicio_1_1Registro_a6a93f0b66e0c307a8f53722f3f41ce91}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 229 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a6a93f0b66e0c307a8f53722f3f41ce91}\label{classInicio_1_1Registro_a6a93f0b66e0c307a8f53722f3f41ce91}} 
 \index{Inicio.Registro@{Inicio.Registro}!RadioButtonList1@{RadioButtonList1}}
 \index{RadioButtonList1@{RadioButtonList1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RadioButtonList1}{RadioButtonList1}}
@@ -220,7 +375,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Radio\+Button\+List1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a1d327341db3c92117be1c5e828fe2bf9}\label{classInicio_1_1Registro_a1d327341db3c92117be1c5e828fe2bf9}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 193 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a1d327341db3c92117be1c5e828fe2bf9}\label{classInicio_1_1Registro_a1d327341db3c92117be1c5e828fe2bf9}} 
 \index{Inicio.Registro@{Inicio.Registro}!RegularExpressionValidator1@{RegularExpressionValidator1}}
 \index{RegularExpressionValidator1@{RegularExpressionValidator1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RegularExpressionValidator1}{RegularExpressionValidator1}}
@@ -230,7 +393,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Regular\+Expression\+Validator1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_af596d0fdac782957e6f85a4e5d8f3ee3}\label{classInicio_1_1Registro_af596d0fdac782957e6f85a4e5d8f3ee3}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 58 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_af596d0fdac782957e6f85a4e5d8f3ee3}\label{classInicio_1_1Registro_af596d0fdac782957e6f85a4e5d8f3ee3}} 
 \index{Inicio.Registro@{Inicio.Registro}!RequiredFieldValidator1@{RequiredFieldValidator1}}
 \index{RequiredFieldValidator1@{RequiredFieldValidator1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator1}{RequiredFieldValidator1}}
@@ -240,7 +407,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a315fe7dd04ad883d4acd03f25fb7c1e9}\label{classInicio_1_1Registro_a315fe7dd04ad883d4acd03f25fb7c1e9}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 85 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a315fe7dd04ad883d4acd03f25fb7c1e9}\label{classInicio_1_1Registro_a315fe7dd04ad883d4acd03f25fb7c1e9}} 
 \index{Inicio.Registro@{Inicio.Registro}!RequiredFieldValidator2@{RequiredFieldValidator2}}
 \index{RequiredFieldValidator2@{RequiredFieldValidator2}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator2}{RequiredFieldValidator2}}
@@ -250,7 +421,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a24b35dd88cea1b27e18e681d9f1bd24a}\label{classInicio_1_1Registro_a24b35dd88cea1b27e18e681d9f1bd24a}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 112 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a24b35dd88cea1b27e18e681d9f1bd24a}\label{classInicio_1_1Registro_a24b35dd88cea1b27e18e681d9f1bd24a}} 
 \index{Inicio.Registro@{Inicio.Registro}!RequiredFieldValidator3@{RequiredFieldValidator3}}
 \index{RequiredFieldValidator3@{RequiredFieldValidator3}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator3}{RequiredFieldValidator3}}
@@ -260,7 +435,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator3. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a50ab8ab72bcd7c32903c8af8acb766ea}\label{classInicio_1_1Registro_a50ab8ab72bcd7c32903c8af8acb766ea}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 139 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a50ab8ab72bcd7c32903c8af8acb766ea}\label{classInicio_1_1Registro_a50ab8ab72bcd7c32903c8af8acb766ea}} 
 \index{Inicio.Registro@{Inicio.Registro}!RequiredFieldValidator4@{RequiredFieldValidator4}}
 \index{RequiredFieldValidator4@{RequiredFieldValidator4}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator4}{RequiredFieldValidator4}}
@@ -270,7 +449,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator4. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_af4f83864caf67319997d2b41fb4298b2}\label{classInicio_1_1Registro_af4f83864caf67319997d2b41fb4298b2}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 166 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_af4f83864caf67319997d2b41fb4298b2}\label{classInicio_1_1Registro_af4f83864caf67319997d2b41fb4298b2}} 
 \index{Inicio.Registro@{Inicio.Registro}!RequiredFieldValidator5@{RequiredFieldValidator5}}
 \index{RequiredFieldValidator5@{RequiredFieldValidator5}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator5}{RequiredFieldValidator5}}
@@ -280,7 +463,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator5. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_ab767617adc8dcd13a78c70824d55eb24}\label{classInicio_1_1Registro_ab767617adc8dcd13a78c70824d55eb24}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 49 del archivo Registro.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registro_ab767617adc8dcd13a78c70824d55eb24}\label{classInicio_1_1Registro_ab767617adc8dcd13a78c70824d55eb24}} 
 \index{Inicio.Registro@{Inicio.Registro}!TextBox1@{TextBox1}}
 \index{TextBox1@{TextBox1}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{TextBox1}{TextBox1}}
@@ -290,7 +477,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a24be4248d4791f6b323568f814f5e5c2}\label{classInicio_1_1Registro_a24be4248d4791f6b323568f814f5e5c2}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 40 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a24be4248d4791f6b323568f814f5e5c2}\label{classInicio_1_1Registro_a24be4248d4791f6b323568f814f5e5c2}} 
 \index{Inicio.Registro@{Inicio.Registro}!TextBox2@{TextBox2}}
 \index{TextBox2@{TextBox2}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{TextBox2}{TextBox2}}
@@ -300,7 +495,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_adc45c7cdfd1ee0e80f517f1bb9e827ff}\label{classInicio_1_1Registro_adc45c7cdfd1ee0e80f517f1bb9e827ff}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 76 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_adc45c7cdfd1ee0e80f517f1bb9e827ff}\label{classInicio_1_1Registro_adc45c7cdfd1ee0e80f517f1bb9e827ff}} 
 \index{Inicio.Registro@{Inicio.Registro}!TextBox3@{TextBox3}}
 \index{TextBox3@{TextBox3}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{TextBox3}{TextBox3}}
@@ -310,7 +513,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box3. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a835108d17c8690d089f9ee129b2ff7f3}\label{classInicio_1_1Registro_a835108d17c8690d089f9ee129b2ff7f3}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 103 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a835108d17c8690d089f9ee129b2ff7f3}\label{classInicio_1_1Registro_a835108d17c8690d089f9ee129b2ff7f3}} 
 \index{Inicio.Registro@{Inicio.Registro}!TextBox4@{TextBox4}}
 \index{TextBox4@{TextBox4}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{TextBox4}{TextBox4}}
@@ -320,7 +531,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box4. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registro_a9bc70ac4aacbc0573d097586b9663f28}\label{classInicio_1_1Registro_a9bc70ac4aacbc0573d097586b9663f28}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 130 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registro.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registro_a9bc70ac4aacbc0573d097586b9663f28}\label{classInicio_1_1Registro_a9bc70ac4aacbc0573d097586b9663f28}} 
 \index{Inicio.Registro@{Inicio.Registro}!TextBox5@{TextBox5}}
 \index{TextBox5@{TextBox5}!Inicio.Registro@{Inicio.Registro}}
 \subsubsection{\texorpdfstring{TextBox5}{TextBox5}}
@@ -331,6 +550,10 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 Control Text\+Box5. 
 
 Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 157 del archivo Registro.\+aspx.\+designer.\+cs.
+
+
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 

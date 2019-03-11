@@ -24,12 +24,65 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Hyper\+Link \mbox{\hyperlink{c
 \begin{DoxyCompactList}\small\item\em Control Hyper\+Link2. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\subsection{Descripción detallada}
+
+
+Definición en la línea 12 del archivo Confirmar.\+aspx.\+cs.
+
+
+
 \subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classInicio_1_1Confirmar_a47f2d7d6e91b4e672a1b954710c65daf}\label{classInicio_1_1Confirmar_a47f2d7d6e91b4e672a1b954710c65daf}} 
 \index{Inicio.Confirmar@{Inicio.Confirmar}!Page\_Load@{Page\_Load}}
 \index{Page\_Load@{Page\_Load}!Inicio.Confirmar@{Inicio.Confirmar}}
 \subsubsection{\texorpdfstring{Page\_Load()}{Page\_Load()}}
 {\footnotesize\ttfamily void Inicio.\+Confirmar.\+Page\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definición en la línea 20 del archivo Confirmar.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21         \{}
+\DoxyCodeLine{22             \textcolor{keywordtype}{string} email = Request.QueryString[\textcolor{stringliteral}{"mbr"}];}
+\DoxyCodeLine{23             \textcolor{keywordtype}{int} numconfir = Convert.ToInt32(Request.QueryString[\textcolor{stringliteral}{"numconf"}]);}
+\DoxyCodeLine{24             AccesoDatos paraConectar = \textcolor{keyword}{new} AccesoDatos();}
+\DoxyCodeLine{25             SqlConnection conexionDesdeClase = paraConectar.conexionSql();}
+\DoxyCodeLine{26             \textcolor{keywordtype}{string} query = \textcolor{stringliteral}{"SELECT count(*) FROM Usuarios WHERE email = '"}+email+\textcolor{stringliteral}{"' AND numconfir = "}+numconfir +\textcolor{stringliteral}{""};}
+\DoxyCodeLine{27             SqlCommand comando = \textcolor{keyword}{new} SqlCommand(query, conexionDesdeClase);}
+\DoxyCodeLine{28             \textcolor{keywordtype}{int} numReg = Convert.ToInt32(comando.ExecuteScalar());}
+\DoxyCodeLine{29             \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{30             \textcolor{keywordflow}{if} (numReg > 0)}
+\DoxyCodeLine{31             \{ }
+\DoxyCodeLine{32                 \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text = \textcolor{stringliteral}{"Hola, ya estás registrado en el sistema"};}
+\DoxyCodeLine{33                 \textcolor{keywordtype}{string} queryUpdate = \textcolor{stringliteral}{"UPDATE Usuarios SET confirmado=1  WHERE email='"}+email+\textcolor{stringliteral}{"' "};}
+\DoxyCodeLine{34                 SqlCommand comandoUpdate = \textcolor{keyword}{new} SqlCommand(queryUpdate, conexionDesdeClase);}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{try}}
+\DoxyCodeLine{36                 \{}
+\DoxyCodeLine{37                     \textcolor{keywordtype}{int} resultUpdate = comandoUpdate.ExecuteNonQuery();}
+\DoxyCodeLine{38                     \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text = \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text + \textcolor{stringliteral}{" y se ha confirmado tu registro "};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40                 \}\textcolor{keywordflow}{catch}(Exception ex)}
+\DoxyCodeLine{41                 \{}
+\DoxyCodeLine{42                     \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text = \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text + ex;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44                 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46                 \mbox{\hyperlink{classInicio_1_1Confirmar_aa4a4ab67f1e6964cdc3e83eb66293fa9}{HyperLink1}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{49             \{}
+\DoxyCodeLine{50                 \mbox{\hyperlink{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}{Label1}}.Text = \textcolor{stringliteral}{"No ha sido correcta la identificación"};}
+\DoxyCodeLine{51                 \mbox{\hyperlink{classInicio_1_1Confirmar_adbc12b387c3590f83453888d8192db9a}{HyperLink2}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{52             \}}
+\DoxyCodeLine{53             conexionDesdeClase.Close();}
+\DoxyCodeLine{54         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Confirmar.\+Hyper\+Link1, Inicio.\+Confirmar.\+Hyper\+Link2 y Inicio.\+Confirmar.\+Label1.
 
 
 
@@ -44,7 +97,11 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Hyper\+Link \mbox{\hyperlink{c
 
 Control form1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Confirmar_aa4a4ab67f1e6964cdc3e83eb66293fa9}\label{classInicio_1_1Confirmar_aa4a4ab67f1e6964cdc3e83eb66293fa9}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 22 del archivo Confirmar.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Confirmar_aa4a4ab67f1e6964cdc3e83eb66293fa9}\label{classInicio_1_1Confirmar_aa4a4ab67f1e6964cdc3e83eb66293fa9}} 
 \index{Inicio.Confirmar@{Inicio.Confirmar}!HyperLink1@{HyperLink1}}
 \index{HyperLink1@{HyperLink1}!Inicio.Confirmar@{Inicio.Confirmar}}
 \subsubsection{\texorpdfstring{HyperLink1}{HyperLink1}}
@@ -54,7 +111,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Hyper\+Link1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Confirmar_adbc12b387c3590f83453888d8192db9a}\label{classInicio_1_1Confirmar_adbc12b387c3590f83453888d8192db9a}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 40 del archivo Confirmar.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Confirmar.\+Page\+\_\+\+Load().
+
+\mbox{\Hypertarget{classInicio_1_1Confirmar_adbc12b387c3590f83453888d8192db9a}\label{classInicio_1_1Confirmar_adbc12b387c3590f83453888d8192db9a}} 
 \index{Inicio.Confirmar@{Inicio.Confirmar}!HyperLink2@{HyperLink2}}
 \index{HyperLink2@{HyperLink2}!Inicio.Confirmar@{Inicio.Confirmar}}
 \subsubsection{\texorpdfstring{HyperLink2}{HyperLink2}}
@@ -64,7 +129,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Hyper\+Link2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}\label{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 49 del archivo Confirmar.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Confirmar.\+Page\+\_\+\+Load().
+
+\mbox{\Hypertarget{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}\label{classInicio_1_1Confirmar_a0422c86bf977b315fd681b02c0f5f352}} 
 \index{Inicio.Confirmar@{Inicio.Confirmar}!Label1@{Label1}}
 \index{Label1@{Label1}!Inicio.Confirmar@{Inicio.Confirmar}}
 \subsubsection{\texorpdfstring{Label1}{Label1}}
@@ -75,6 +148,14 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 Control Label1. 
 
 Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 31 del archivo Confirmar.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Confirmar.\+Page\+\_\+\+Load().
+
+
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 

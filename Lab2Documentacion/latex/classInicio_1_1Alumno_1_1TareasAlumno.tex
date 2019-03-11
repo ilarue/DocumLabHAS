@@ -1,0 +1,242 @@
+\hypertarget{classInicio_1_1Alumno_1_1TareasAlumno}{}\section{Referencia de la Clase Inicio.\+Alumno.\+Tareas\+Alumno}
+\label{classInicio_1_1Alumno_1_1TareasAlumno}\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+Diagrama de herencias de Inicio.\+Alumno.\+Tareas\+Alumno\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classInicio_1_1Alumno_1_1TareasAlumno}
+\end{center}
+\end{figure}
+\subsection*{Métodos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a138bc452a7798faa63c4800b4a6d0cfe}{Page\+\_\+\+Load}} (object sender, Event\+Args e)
+\item 
+void \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ab7341d8a2105b51ae67ab7b551bfe8b8}{Drop\+Down\+List1\+\_\+\+Selected\+Index\+Changed}} (object sender, Event\+Args e)
+\item 
+void \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a71a8f5108e059c831491a9387aa8f6af}{Grid\+View1\+\_\+\+Row\+Command}} (object sender, Grid\+View\+Command\+Event\+Args e)
+\end{DoxyCompactItemize}
+\subsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+global\+::\+System.\+Web.\+U\+I.\+Html\+Controls.\+Html\+Form \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a9a9c1002686b25b5b81e64d6f49111be}{form1}}
+\begin{DoxyCompactList}\small\item\em Control form1. \end{DoxyCompactList}\item 
+global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Drop\+Down\+List \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{Drop\+Down\+List1}}
+\begin{DoxyCompactList}\small\item\em Control Drop\+Down\+List1. \end{DoxyCompactList}\item 
+global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Grid\+View \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{Grid\+View1}}
+\begin{DoxyCompactList}\small\item\em Control Grid\+View1. \end{DoxyCompactList}\item 
+global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}
+\begin{DoxyCompactList}\small\item\em Control Label1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+
+
+Definición en la línea 13 del archivo Tareas\+Alumno.\+aspx.\+cs.
+
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_ab7341d8a2105b51ae67ab7b551bfe8b8}\label{classInicio_1_1Alumno_1_1TareasAlumno_ab7341d8a2105b51ae67ab7b551bfe8b8}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!DropDownList1\_SelectedIndexChanged@{DropDownList1\_SelectedIndexChanged}}
+\index{DropDownList1\_SelectedIndexChanged@{DropDownList1\_SelectedIndexChanged}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{DropDownList1\_SelectedIndexChanged()}{DropDownList1\_SelectedIndexChanged()}}
+{\footnotesize\ttfamily void Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1\+\_\+\+Selected\+Index\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definición en la línea 46 del archivo Tareas\+Alumno.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48             \textcolor{keywordtype}{string} val = \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{DropDownList1}}.SelectedValue;}
+\DoxyCodeLine{49             \textcolor{keywordtype}{string} email = (string)Session[\textcolor{stringliteral}{"email"}];}
+\DoxyCodeLine{50             SqlConnection conexion = \textcolor{keyword}{new} SqlConnection();}
+\DoxyCodeLine{51             conexion.ConnectionString = Secret.credenciales;}
+\DoxyCodeLine{52             \textcolor{comment}{/*Creamos data adapter con la conexión y la tabla que queremos traer*/}}
+\DoxyCodeLine{53             SqlDataAdapter dAdapter = \textcolor{keyword}{new} SqlDataAdapter(\textcolor{stringliteral}{"SELECT Codigo, Descripcion, HEstimadas,TipoTarea   FROM TareasGenericas WHERE TareasGenericas.Codigo NOT IN (SELECT CodTarea FROM EstudiantesTareas WHERE Email = '"} + email+\textcolor{stringliteral}{"') AND TareasGenericas.Explotacion = 1 AND TareasGenericas.CodAsig = '"}+val+\textcolor{stringliteral}{"'"},}
+\DoxyCodeLine{54                 conexion);}
+\DoxyCodeLine{55             \textcolor{comment}{/* Con el command buider construiremos las sentencias sobre el data adapter*/}}
+\DoxyCodeLine{56             SqlCommandBuilder cBuilder = \textcolor{keyword}{new} SqlCommandBuilder(dAdapter);}
+\DoxyCodeLine{57             \textcolor{comment}{/*El método fill del data adapter además de abrir y cerrar la conexión}}
+\DoxyCodeLine{58 \textcolor{comment}{             * lanza las consultas y obtiene todo}}
+\DoxyCodeLine{59 \textcolor{comment}{             */}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61             \textcolor{comment}{/*Creamos el objeto data set*/}}
+\DoxyCodeLine{62             DataSet dset = \textcolor{keyword}{new} DataSet();}
+\DoxyCodeLine{63             dAdapter.Fill(dset, \textcolor{stringliteral}{"TareasGenericas"});}
+\DoxyCodeLine{64             DataTable dtable = \textcolor{keyword}{new} DataTable();}
+\DoxyCodeLine{65             dtable = dset.Tables[\textcolor{stringliteral}{"TareasGenericas"}];}
+\DoxyCodeLine{66             Session[\textcolor{stringliteral}{"dtable"}] = dtable;}
+\DoxyCodeLine{67             \textcolor{keywordflow}{if} (dset.Tables[0].Rows.Count == 0)}
+\DoxyCodeLine{68             \{}
+\DoxyCodeLine{69                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{GridView1}}.DataSource = \textcolor{keyword}{null};}
+\DoxyCodeLine{70                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{GridView1}}.DataBind();}
+\DoxyCodeLine{71                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{72                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}.Text = \textcolor{stringliteral}{"No hay tareas a instanciar para esta asignatura porque el profesor no las ha puesto en explotación(para rellenar horas reales) todavía o porque ya has insertado las horas reales."};}
+\DoxyCodeLine{73             \}}
+\DoxyCodeLine{74             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{75             \{}
+\DoxyCodeLine{76                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}.Visible = \textcolor{keyword}{false};}
+\DoxyCodeLine{77                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{GridView1}}.DataSource = dtable;}
+\DoxyCodeLine{78                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{GridView1}}.DataBind();            \}}
+\DoxyCodeLine{79                }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1, Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1 y Inicio.\+Alumno.\+Tareas\+Alumno.\+Label1.
+
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_a71a8f5108e059c831491a9387aa8f6af}\label{classInicio_1_1Alumno_1_1TareasAlumno_a71a8f5108e059c831491a9387aa8f6af}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!GridView1\_RowCommand@{GridView1\_RowCommand}}
+\index{GridView1\_RowCommand@{GridView1\_RowCommand}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{GridView1\_RowCommand()}{GridView1\_RowCommand()}}
+{\footnotesize\ttfamily void Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1\+\_\+\+Row\+Command (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Grid\+View\+Command\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definición en la línea 83 del archivo Tareas\+Alumno.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85             \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{86             \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}{Label1}}.Text = sender.ToString();}
+\DoxyCodeLine{87             \textcolor{keywordtype}{int} index =Convert.ToInt32(e.CommandArgument);}
+\DoxyCodeLine{88             GridViewRow row = \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}{GridView1}}.Rows[index];}
+\DoxyCodeLine{89             \textcolor{keywordtype}{string} codTarea = row.Cells[1].Text;}
+\DoxyCodeLine{90             \textcolor{keywordtype}{string} horas = row.Cells[3].Text;}
+\DoxyCodeLine{91             Response.Redirect(\textcolor{stringliteral}{"InstanciarTarea.aspx?codigo="}+codTarea+\textcolor{stringliteral}{"\&estimadas="}+horas+\textcolor{stringliteral}{""});}
+\DoxyCodeLine{92         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1 y Inicio.\+Alumno.\+Tareas\+Alumno.\+Label1.
+
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_a138bc452a7798faa63c4800b4a6d0cfe}\label{classInicio_1_1Alumno_1_1TareasAlumno_a138bc452a7798faa63c4800b4a6d0cfe}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!Page\_Load@{Page\_Load}}
+\index{Page\_Load@{Page\_Load}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{Page\_Load()}{Page\_Load()}}
+{\footnotesize\ttfamily void Inicio.\+Alumno.\+Tareas\+Alumno.\+Page\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definición en la línea 15 del archivo Tareas\+Alumno.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16         \{}
+\DoxyCodeLine{17             \textcolor{keywordflow}{if} (!Page.IsPostBack)}
+\DoxyCodeLine{18             \{}
+\DoxyCodeLine{19                 \textcolor{comment}{/*Creamos la conexión para traer con el data adapter las tablas a memoria}}
+\DoxyCodeLine{20 \textcolor{comment}{                     *Ahora no usuamos una instancia de AccesoDatos que hemos creado para conectar }}
+\DoxyCodeLine{21 \textcolor{comment}{                     *porque lo hará todo el método fill de dataAdapter. }}
+\DoxyCodeLine{22 \textcolor{comment}{                     *Sólo creamos el objeto sqlconnection y le damos el string}}
+\DoxyCodeLine{23 \textcolor{comment}{                     */}}
+\DoxyCodeLine{24                 \textcolor{keywordtype}{string} email = (string)Session[\textcolor{stringliteral}{"email"}];}
+\DoxyCodeLine{25                 SqlConnection conexion = \textcolor{keyword}{new} SqlConnection();}
+\DoxyCodeLine{26                 conexion.ConnectionString = Secret.credenciales;}
+\DoxyCodeLine{27                 \textcolor{comment}{/*Creamos data adapter con la conexión y la tabla que queremos traer*/}}
+\DoxyCodeLine{28                 SqlDataAdapter dAdapter = \textcolor{keyword}{new} SqlDataAdapter(\textcolor{stringliteral}{"SELECT Asignaturas.Nombre, Asignaturas.codigo FROM EstudiantesGrupo, Asignaturas, GruposClase WHERE EstudiantesGrupo.Email = '"} + email + \textcolor{stringliteral}{"' AND EstudiantesGrupo.Grupo = GruposClase.codigo AND GruposClase.codigoasig = Asignaturas.codigo"},}
+\DoxyCodeLine{29                     conexion);}
+\DoxyCodeLine{30                 \textcolor{comment}{/* Con el command buider construiremos las sentencias sobre el data adapter*/}}
+\DoxyCodeLine{31                 SqlCommandBuilder cBuilder = \textcolor{keyword}{new} SqlCommandBuilder(dAdapter);}
+\DoxyCodeLine{32                 \textcolor{comment}{/*El método fill del data adapter además de abrir y cerrar la conexión}}
+\DoxyCodeLine{33 \textcolor{comment}{                 * lanza las consultas y obtiene todo}}
+\DoxyCodeLine{34 \textcolor{comment}{                 */}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36                 \textcolor{comment}{/*Creamos el objeto data set*/}}
+\DoxyCodeLine{37                 DataSet dset = \textcolor{keyword}{new} DataSet();}
+\DoxyCodeLine{38                 dAdapter.Fill(dset, \textcolor{stringliteral}{"AsignaturasAl"});}
+\DoxyCodeLine{39                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{DropDownList1}}.DataSource = dset.Tables[\textcolor{stringliteral}{"AsignaturasAl"}];}
+\DoxyCodeLine{40                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{DropDownList1}}.DataTextField = dset.Tables[0].Columns[\textcolor{stringliteral}{"codigo"}].ToString();}
+\DoxyCodeLine{41                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{DropDownList1}}.DataValueField = dset.Tables[0].Columns[\textcolor{stringliteral}{"codigo"}].ToString();}
+\DoxyCodeLine{42                 \mbox{\hyperlink{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}{DropDownList1}}.DataBind();}
+\DoxyCodeLine{43             \}}
+\DoxyCodeLine{44         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1.
+
+
+
+\subsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}\label{classInicio_1_1Alumno_1_1TareasAlumno_ac2aabbccda02faae4f64bcf85e100556}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!DropDownList1@{DropDownList1}}
+\index{DropDownList1@{DropDownList1}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{DropDownList1}{DropDownList1}}
+{\footnotesize\ttfamily global.\+System.\+Web.\+U\+I.\+Web\+Controls.\+Drop\+Down\+List Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Control Drop\+Down\+List1. 
+
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 31 del archivo Tareas\+Alumno.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1\+\_\+\+Selected\+Index\+Changed() y Inicio.\+Alumno.\+Tareas\+Alumno.\+Page\+\_\+\+Load().
+
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_a9a9c1002686b25b5b81e64d6f49111be}\label{classInicio_1_1Alumno_1_1TareasAlumno_a9a9c1002686b25b5b81e64d6f49111be}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!form1@{form1}}
+\index{form1@{form1}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{form1}{form1}}
+{\footnotesize\ttfamily global.\+System.\+Web.\+U\+I.\+Html\+Controls.\+Html\+Form Inicio.\+Alumno.\+Tareas\+Alumno.\+form1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Control form1. 
+
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 22 del archivo Tareas\+Alumno.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}\label{classInicio_1_1Alumno_1_1TareasAlumno_a00d31bb5bb72e919f1b1eddb71375eac}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!GridView1@{GridView1}}
+\index{GridView1@{GridView1}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{GridView1}{GridView1}}
+{\footnotesize\ttfamily global.\+System.\+Web.\+U\+I.\+Web\+Controls.\+Grid\+View Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Control Grid\+View1. 
+
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 40 del archivo Tareas\+Alumno.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1\+\_\+\+Selected\+Index\+Changed() y Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1\+\_\+\+Row\+Command().
+
+\mbox{\Hypertarget{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}\label{classInicio_1_1Alumno_1_1TareasAlumno_aa472c0d32d562f35fc34c59867581297}} 
+\index{Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}!Label1@{Label1}}
+\index{Label1@{Label1}!Inicio.Alumno.TareasAlumno@{Inicio.Alumno.TareasAlumno}}
+\subsubsection{\texorpdfstring{Label1}{Label1}}
+{\footnotesize\ttfamily global.\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label Inicio.\+Alumno.\+Tareas\+Alumno.\+Label1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Control Label1. 
+
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 49 del archivo Tareas\+Alumno.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Alumno.\+Tareas\+Alumno.\+Drop\+Down\+List1\+\_\+\+Selected\+Index\+Changed() y Inicio.\+Alumno.\+Tareas\+Alumno.\+Grid\+View1\+\_\+\+Row\+Command().
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+Alumno/\mbox{\hyperlink{TareasAlumno_8aspx_8cs}{Tareas\+Alumno.\+aspx.\+cs}}\item 
+Alumno/\mbox{\hyperlink{TareasAlumno_8aspx_8designer_8cs}{Tareas\+Alumno.\+aspx.\+designer.\+cs}}\end{DoxyCompactItemize}

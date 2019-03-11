@@ -48,6 +48,13 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 \begin{DoxyCompactList}\small\item\em Control Label3. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\subsection{Descripción detallada}
+
+
+Definición en la línea 12 del archivo Inicio.\+aspx.\+cs.
+
+
+
 \subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classInicio_1_1Login_a4c72ae6605baac8dff22e547df892ba1}\label{classInicio_1_1Login_a4c72ae6605baac8dff22e547df892ba1}} 
 \index{Inicio.Login@{Inicio.Login}!Button1\_Click@{Button1\_Click}}
@@ -55,30 +62,119 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 \subsubsection{\texorpdfstring{Button1\_Click()}{Button1\_Click()}}
 {\footnotesize\ttfamily void Inicio.\+Login.\+Button1\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 32 del archivo Inicio.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             \textcolor{keywordtype}{string}  email = Request.Form[\textcolor{stringliteral}{"TextBox3"}];}
+\DoxyCodeLine{35             \textcolor{keywordtype}{string} pass = Request.Form[\textcolor{stringliteral}{"TextBox2"}];}
+\DoxyCodeLine{36             AccesoDatos paraConectar = \textcolor{keyword}{new} AccesoDatos();}
+\DoxyCodeLine{37             SqlConnection conexionDesdeClase = paraConectar.conexionSql();}
+\DoxyCodeLine{38             \textcolor{comment}{/*Al seleccionar si es tipo profesor o alumno no hay problema con mayusculas-minusculas}}
+\DoxyCodeLine{39 \textcolor{comment}{             porque lo toma del texto del radio button que es siempre Profesor y Alumno*/}}
+\DoxyCodeLine{40             \textcolor{keywordtype}{string} queryAl = \textcolor{stringliteral}{"SELECT count(*) FROM Usuarios WHERE email ='"}+email+\textcolor{stringliteral}{"' AND pass ='"}+pass+\textcolor{stringliteral}{"' AND confirmado=1 AND tipo = 'Alumno' "};}
+\DoxyCodeLine{41             SqlCommand comandoAl = \textcolor{keyword}{new} SqlCommand(queryAl, conexionDesdeClase);}
+\DoxyCodeLine{42             \textcolor{keywordtype}{int} numRegAl = Convert.ToInt32(comandoAl.ExecuteScalar());}
+\DoxyCodeLine{43             \textcolor{keywordtype}{string} queryPr = \textcolor{stringliteral}{"SELECT count(*) FROM Usuarios WHERE email ='"} + email + \textcolor{stringliteral}{"' AND pass ='"} + pass + \textcolor{stringliteral}{"' AND confirmado=1 AND tipo = 'Profesor' "};}
+\DoxyCodeLine{44             SqlCommand comandoPr = \textcolor{keyword}{new} SqlCommand(queryPr, conexionDesdeClase);}
+\DoxyCodeLine{45             \textcolor{keywordtype}{int} numRegPr = Convert.ToInt32(comandoPr.ExecuteScalar());}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47             \textcolor{keywordflow}{if} (numRegAl > 0 || numRegPr > 0)}
+\DoxyCodeLine{48             \{}
+\DoxyCodeLine{49                 Session[\textcolor{stringliteral}{"email"}] = email;}
+\DoxyCodeLine{50                 \textcolor{keywordflow}{if}(numRegAl > 0)}
+\DoxyCodeLine{51                 \{}
+\DoxyCodeLine{52                     Response.Redirect(\textcolor{stringliteral}{"Alumno/Alumno.aspx"});}
+\DoxyCodeLine{53                 \}}
+\DoxyCodeLine{54                \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numRegPr > 0)}
+\DoxyCodeLine{55                 \{}
+\DoxyCodeLine{56                     Response.Redirect(\textcolor{stringliteral}{"Profesor/Profesor.aspx"});}
+\DoxyCodeLine{57                 \}}
+\DoxyCodeLine{58             \}}
+\DoxyCodeLine{59             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{60             \{}
+\DoxyCodeLine{61                 \mbox{\hyperlink{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}{Label3}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{62                 \mbox{\hyperlink{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}{Label3}}.Text = \textcolor{stringliteral}{"Lo sentimos pero este usuario no existe o la contraseña es incorrecta, o no ha sido confirmado su registro"};}
+\DoxyCodeLine{63             \}}
+\DoxyCodeLine{64             conexionDesdeClase.Close();}
+\DoxyCodeLine{65         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Login.\+Label3.
+
 \mbox{\Hypertarget{classInicio_1_1Login_a4d29cabcb378199a88f9ec9dc57961da}\label{classInicio_1_1Login_a4d29cabcb378199a88f9ec9dc57961da}} 
 \index{Inicio.Login@{Inicio.Login}!LinkButton1\_Click@{LinkButton1\_Click}}
 \index{LinkButton1\_Click@{LinkButton1\_Click}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{LinkButton1\_Click()}{LinkButton1\_Click()}}
 {\footnotesize\ttfamily void Inicio.\+Login.\+Link\+Button1\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 24 del archivo Inicio.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25         \{}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{classInicio_1_1Login_a82c40c536f8833e113c9149c09b1f4de}\label{classInicio_1_1Login_a82c40c536f8833e113c9149c09b1f4de}} 
 \index{Inicio.Login@{Inicio.Login}!Page\_Load@{Page\_Load}}
 \index{Page\_Load@{Page\_Load}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{Page\_Load()}{Page\_Load()}}
 {\footnotesize\ttfamily void Inicio.\+Login.\+Page\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 14 del archivo Inicio.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15         \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{classInicio_1_1Login_ac97e06c22c6f6ac020c4cf2eff5e48ea}\label{classInicio_1_1Login_ac97e06c22c6f6ac020c4cf2eff5e48ea}} 
 \index{Inicio.Login@{Inicio.Login}!TextBox1\_TextChanged@{TextBox1\_TextChanged}}
 \index{TextBox1\_TextChanged@{TextBox1\_TextChanged}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{TextBox1\_TextChanged()}{TextBox1\_TextChanged()}}
 {\footnotesize\ttfamily void Inicio.\+Login.\+Text\+Box1\+\_\+\+Text\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 19 del archivo Inicio.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{classInicio_1_1Login_a332bc2333d4b1baf24c09b02f343734b}\label{classInicio_1_1Login_a332bc2333d4b1baf24c09b02f343734b}} 
 \index{Inicio.Login@{Inicio.Login}!TextBox3\_TextChanged@{TextBox3\_TextChanged}}
 \index{TextBox3\_TextChanged@{TextBox3\_TextChanged}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{TextBox3\_TextChanged()}{TextBox3\_TextChanged()}}
 {\footnotesize\ttfamily void Inicio.\+Login.\+Text\+Box3\+\_\+\+Text\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 67 del archivo Inicio.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68         \{}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         \}}
+
+\end{DoxyCode}
 
 
 \subsection{Documentación de los datos miembro}
@@ -92,7 +188,11 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Label \mbox{\hyperlink{classIn
 
 Control Button1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a52e65c9e6119c96fb9e7efb178a72214}\label{classInicio_1_1Login_a52e65c9e6119c96fb9e7efb178a72214}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 94 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a52e65c9e6119c96fb9e7efb178a72214}\label{classInicio_1_1Login_a52e65c9e6119c96fb9e7efb178a72214}} 
 \index{Inicio.Login@{Inicio.Login}!form1@{form1}}
 \index{form1@{form1}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{form1}{form1}}
@@ -102,7 +202,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control form1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a3370ab8441b3a73d003560dcbcaff0d9}\label{classInicio_1_1Login_a3370ab8441b3a73d003560dcbcaff0d9}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 22 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a3370ab8441b3a73d003560dcbcaff0d9}\label{classInicio_1_1Login_a3370ab8441b3a73d003560dcbcaff0d9}} 
 \index{Inicio.Login@{Inicio.Login}!HyperLink1@{HyperLink1}}
 \index{HyperLink1@{HyperLink1}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{HyperLink1}{HyperLink1}}
@@ -112,7 +216,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Hyper\+Link1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a51395541b60da1b91a7cbbd240b4c0f3}\label{classInicio_1_1Login_a51395541b60da1b91a7cbbd240b4c0f3}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 103 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a51395541b60da1b91a7cbbd240b4c0f3}\label{classInicio_1_1Login_a51395541b60da1b91a7cbbd240b4c0f3}} 
 \index{Inicio.Login@{Inicio.Login}!HyperLink2@{HyperLink2}}
 \index{HyperLink2@{HyperLink2}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{HyperLink2}{HyperLink2}}
@@ -122,7 +230,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Hyper\+Link2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a089c50220a66bcedf279557e235b7fb1}\label{classInicio_1_1Login_a089c50220a66bcedf279557e235b7fb1}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 112 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a089c50220a66bcedf279557e235b7fb1}\label{classInicio_1_1Login_a089c50220a66bcedf279557e235b7fb1}} 
 \index{Inicio.Login@{Inicio.Login}!Label1@{Label1}}
 \index{Label1@{Label1}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{Label1}{Label1}}
@@ -132,7 +244,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a88ab7f12f1587cb3a0174d4bdc7baa39}\label{classInicio_1_1Login_a88ab7f12f1587cb3a0174d4bdc7baa39}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 31 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a88ab7f12f1587cb3a0174d4bdc7baa39}\label{classInicio_1_1Login_a88ab7f12f1587cb3a0174d4bdc7baa39}} 
 \index{Inicio.Login@{Inicio.Login}!Label2@{Label2}}
 \index{Label2@{Label2}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{Label2}{Label2}}
@@ -142,7 +258,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}\label{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 67 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}\label{classInicio_1_1Login_ad052535d49bad44248dd771596f4a8af}} 
 \index{Inicio.Login@{Inicio.Login}!Label3@{Label3}}
 \index{Label3@{Label3}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{Label3}{Label3}}
@@ -152,7 +272,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label3. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_aebbbf7080d71a07e72e4be45e42c6795}\label{classInicio_1_1Login_aebbbf7080d71a07e72e4be45e42c6795}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 121 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Login.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Login_aebbbf7080d71a07e72e4be45e42c6795}\label{classInicio_1_1Login_aebbbf7080d71a07e72e4be45e42c6795}} 
 \index{Inicio.Login@{Inicio.Login}!RegularExpressionValidator1@{RegularExpressionValidator1}}
 \index{RegularExpressionValidator1@{RegularExpressionValidator1}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{RegularExpressionValidator1}{RegularExpressionValidator1}}
@@ -162,7 +290,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Regular\+Expression\+Validator1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_ab86e1edc9ca75591b9305e7c152beb95}\label{classInicio_1_1Login_ab86e1edc9ca75591b9305e7c152beb95}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 58 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_ab86e1edc9ca75591b9305e7c152beb95}\label{classInicio_1_1Login_ab86e1edc9ca75591b9305e7c152beb95}} 
 \index{Inicio.Login@{Inicio.Login}!RequiredFieldValidator1@{RequiredFieldValidator1}}
 \index{RequiredFieldValidator1@{RequiredFieldValidator1}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator1}{RequiredFieldValidator1}}
@@ -172,7 +304,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_a072466936abf9e49afe63fb3874ddee6}\label{classInicio_1_1Login_a072466936abf9e49afe63fb3874ddee6}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 49 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_a072466936abf9e49afe63fb3874ddee6}\label{classInicio_1_1Login_a072466936abf9e49afe63fb3874ddee6}} 
 \index{Inicio.Login@{Inicio.Login}!RequiredFieldValidator2@{RequiredFieldValidator2}}
 \index{RequiredFieldValidator2@{RequiredFieldValidator2}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{RequiredFieldValidator2}{RequiredFieldValidator2}}
@@ -182,7 +318,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Required\+Field\+Validator2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_ac99495a6fbd78cbf118b7c058815e9f2}\label{classInicio_1_1Login_ac99495a6fbd78cbf118b7c058815e9f2}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 85 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_ac99495a6fbd78cbf118b7c058815e9f2}\label{classInicio_1_1Login_ac99495a6fbd78cbf118b7c058815e9f2}} 
 \index{Inicio.Login@{Inicio.Login}!TextBox2@{TextBox2}}
 \index{TextBox2@{TextBox2}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{TextBox2}{TextBox2}}
@@ -192,7 +332,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Login_af3c872110454773d5d53d83c27e6ccb6}\label{classInicio_1_1Login_af3c872110454773d5d53d83c27e6ccb6}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 76 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Login_af3c872110454773d5d53d83c27e6ccb6}\label{classInicio_1_1Login_af3c872110454773d5d53d83c27e6ccb6}} 
 \index{Inicio.Login@{Inicio.Login}!TextBox3@{TextBox3}}
 \index{TextBox3@{TextBox3}!Inicio.Login@{Inicio.Login}}
 \subsubsection{\texorpdfstring{TextBox3}{TextBox3}}
@@ -203,6 +347,10 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 Control Text\+Box3. 
 
 Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 40 del archivo Inicio.\+aspx.\+designer.\+cs.
+
+
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 

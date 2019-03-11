@@ -48,6 +48,13 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Grid\+View \mbox{\hyperlink{cl
 \begin{DoxyCompactList}\small\item\em Control Grid\+View1. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\subsection{Descripción detallada}
+
+
+Definición en la línea 14 del archivo Registrados.\+aspx.\+cs.
+
+
+
 \subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classInicio_1_1Registrados_a3f8a14965116a309bdfe026bf3d6d743}\label{classInicio_1_1Registrados_a3f8a14965116a309bdfe026bf3d6d743}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Button1\_Click@{Button1\_Click}}
@@ -55,17 +62,129 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Grid\+View \mbox{\hyperlink{cl
 \subsubsection{\texorpdfstring{Button1\_Click()}{Button1\_Click()}}
 {\footnotesize\ttfamily void Inicio.\+Registrados.\+Button1\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 55 del archivo Registrados.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56         \{}
+\DoxyCodeLine{57             AccesoDatos paraConectar = \textcolor{keyword}{new} AccesoDatos();}
+\DoxyCodeLine{58             SqlConnection conexion = paraConectar.conexionSql();}
+\DoxyCodeLine{59             \textcolor{keywordtype}{string} query = \textcolor{stringliteral}{"SELECT * FROM Usuarios"};}
+\DoxyCodeLine{60             SqlCommand comando = \textcolor{keyword}{new} SqlCommand(query, conexion);}
+\DoxyCodeLine{61             SqlDataReader reader = comando.ExecuteReader();}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} (reader.HasRows)}
+\DoxyCodeLine{63             \{}
+\DoxyCodeLine{64                 \textcolor{comment}{/*Creamos un gridview para recoger los datos*/}}
+\DoxyCodeLine{65                 \mbox{\hyperlink{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}{GridView1}}.DataSource = reader;}
+\DoxyCodeLine{66                 \mbox{\hyperlink{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}{GridView1}}.DataBind();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68                 \textcolor{comment}{/*Usamos una tabla para recoger los datos. Vemos que la herramienta gridview es más sencilla de usar*/}}
+\DoxyCodeLine{69                 \textcolor{comment}{/*Table1.Visible = true;}}
+\DoxyCodeLine{70 \textcolor{comment}{                while (reader.Read())}}
+\DoxyCodeLine{71 \textcolor{comment}{                \{}}
+\DoxyCodeLine{72 \textcolor{comment}{                    string nombre = (string)reader["nombre"];}}
+\DoxyCodeLine{73 \textcolor{comment}{                    string apellidos = (string)reader["apellidos"];}}
+\DoxyCodeLine{74 \textcolor{comment}{                    string email = (string)reader["email"];}}
+\DoxyCodeLine{75 \textcolor{comment}{                    TableRow row = new TableRow();}}
+\DoxyCodeLine{76 \textcolor{comment}{                    TableCell cell1 = new TableCell();}}
+\DoxyCodeLine{77 \textcolor{comment}{                    TableCell cell2 = new TableCell();}}
+\DoxyCodeLine{78 \textcolor{comment}{                    TableCell cell3 = new TableCell();}}
+\DoxyCodeLine{79 \textcolor{comment}{                    cell1.Text = nombre;}}
+\DoxyCodeLine{80 \textcolor{comment}{                    cell2.Text = apellidos;}}
+\DoxyCodeLine{81 \textcolor{comment}{                    cell3.Text = email;}}
+\DoxyCodeLine{82 \textcolor{comment}{                    row.Cells.Add(cell1);}}
+\DoxyCodeLine{83 \textcolor{comment}{                    row.Cells.Add(cell2);}}
+\DoxyCodeLine{84 \textcolor{comment}{                    row.Cells.Add(cell3);}}
+\DoxyCodeLine{85 \textcolor{comment}{                    Table1.Rows.Add(row);}}
+\DoxyCodeLine{86 \textcolor{comment}{                \}*/}}
+\DoxyCodeLine{87             \}}
+\DoxyCodeLine{88             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{89             \{}
+\DoxyCodeLine{90                 \mbox{\hyperlink{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}{Label2}}.Visible = \textcolor{keyword}{true};}
+\DoxyCodeLine{91                 \mbox{\hyperlink{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}{Label2}}.Text = \textcolor{stringliteral}{"No hay resultados"};}
+\DoxyCodeLine{92             \}}
+\DoxyCodeLine{93             reader.Close();}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Registrados.\+Grid\+View1 y Inicio.\+Registrados.\+Label2.
+
 \mbox{\Hypertarget{classInicio_1_1Registrados_a92b0d0a8bd9eed0d89fe34bd2af00454}\label{classInicio_1_1Registrados_a92b0d0a8bd9eed0d89fe34bd2af00454}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!GridView1\_SelectedIndexChanged@{GridView1\_SelectedIndexChanged}}
 \index{GridView1\_SelectedIndexChanged@{GridView1\_SelectedIndexChanged}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{GridView1\_SelectedIndexChanged()}{GridView1\_SelectedIndexChanged()}}
 {\footnotesize\ttfamily void Inicio.\+Registrados.\+Grid\+View1\+\_\+\+Selected\+Index\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Definición en la línea 98 del archivo Registrados.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{99         \{}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101         \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{classInicio_1_1Registrados_abcd4568d8c98855d98174d384c597063}\label{classInicio_1_1Registrados_abcd4568d8c98855d98174d384c597063}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Page\_Load@{Page\_Load}}
 \index{Page\_Load@{Page\_Load}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Page\_Load()}{Page\_Load()}}
 {\footnotesize\ttfamily void Inicio.\+Registrados.\+Page\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definición en la línea 16 del archivo Registrados.\+aspx.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17         \{}
+\DoxyCodeLine{18             \textcolor{comment}{/* page load se cargan los alumnos desde memoria. Lo hacemos tipo 'no conectado', }}
+\DoxyCodeLine{19 \textcolor{comment}{             aunque se necesita una conexión para traer las tablas a memoria que la abrirá}}
+\DoxyCodeLine{20 \textcolor{comment}{             el método fill*/}}
+\DoxyCodeLine{21             \textcolor{comment}{/*Creamos el objeto data set*/}}
+\DoxyCodeLine{22             DataSet dset = \textcolor{keyword}{new} DataSet();}
+\DoxyCodeLine{23             \textcolor{keywordflow}{if} (Page.IsPostBack)}
+\DoxyCodeLine{24             \{}
+\DoxyCodeLine{25                 Session[\textcolor{stringliteral}{"datos"}] = dset;}
+\DoxyCodeLine{26             \}}
+\DoxyCodeLine{27             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{28             \{}
+\DoxyCodeLine{29                 \textcolor{comment}{/*Creamos la conexión para traer con el data adapter las tablas a memoria}}
+\DoxyCodeLine{30 \textcolor{comment}{                 *Ahora no usuamos una instancia de AccesoDatos que hemos creado para conectar }}
+\DoxyCodeLine{31 \textcolor{comment}{                 *porque lo hará todo el método fill de dataAdapter. }}
+\DoxyCodeLine{32 \textcolor{comment}{                 *Sólo creamos el objeto sqlconnection y le damos el string}}
+\DoxyCodeLine{33 \textcolor{comment}{                 */}}
+\DoxyCodeLine{34                 SqlConnection conexion = \textcolor{keyword}{new} SqlConnection();}
+\DoxyCodeLine{35                 conexion.ConnectionString = Secret.credenciales;}
+\DoxyCodeLine{36                 \textcolor{comment}{/*Creamos data adapter con la conexión y la tabla que queremos traer*/}}
+\DoxyCodeLine{37                 SqlDataAdapter dAdapter = \textcolor{keyword}{new} SqlDataAdapter(\textcolor{stringliteral}{"SELECT * FROM Usuarios"}, conexion);}
+\DoxyCodeLine{38                 \textcolor{comment}{/* Con el command buider construiremos las sentencias sobre el data adapter*/}}
+\DoxyCodeLine{39                 SqlCommandBuilder cBuilder = \textcolor{keyword}{new} SqlCommandBuilder(dAdapter);}
+\DoxyCodeLine{40                 \textcolor{comment}{/*El método fill del data adapter además de abrir y cerrar la conexión}}
+\DoxyCodeLine{41 \textcolor{comment}{                 * lanza las consultas y obtiene todo}}
+\DoxyCodeLine{42 \textcolor{comment}{                 */}}
+\DoxyCodeLine{43                 dAdapter.Fill(dset,\textcolor{stringliteral}{"Usuarios"});}
+\DoxyCodeLine{44                 \mbox{\hyperlink{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}{GridView2}}.DataSource = dset.Tables[\textcolor{stringliteral}{"Usuarios"}];}
+\DoxyCodeLine{45                 \mbox{\hyperlink{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}{GridView2}}.DataBind();}
+\DoxyCodeLine{46                 Session[\textcolor{stringliteral}{"datos"}] = dset;}
+\DoxyCodeLine{47                 Session[\textcolor{stringliteral}{"adaptador"}] = dAdapter;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50             \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         \}}
+
+\end{DoxyCode}
+
+
+Hace referencia a Inicio.\+Registrados.\+Grid\+View2.
 
 
 
@@ -80,7 +199,11 @@ global\+::\+System.\+Web.\+U\+I.\+Web\+Controls.\+Grid\+View \mbox{\hyperlink{cl
 
 Control Button1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a92bb41484c2ad0de40bf04ea1ad2c868}\label{classInicio_1_1Registrados_a92bb41484c2ad0de40bf04ea1ad2c868}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 112 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a92bb41484c2ad0de40bf04ea1ad2c868}\label{classInicio_1_1Registrados_a92bb41484c2ad0de40bf04ea1ad2c868}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Button2@{Button2}}
 \index{Button2@{Button2}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Button2}{Button2}}
@@ -90,7 +213,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Button2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_ac3990a81617665a0ef39beeb50d83806}\label{classInicio_1_1Registrados_ac3990a81617665a0ef39beeb50d83806}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 40 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_ac3990a81617665a0ef39beeb50d83806}\label{classInicio_1_1Registrados_ac3990a81617665a0ef39beeb50d83806}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Button3@{Button3}}
 \index{Button3@{Button3}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Button3}{Button3}}
@@ -100,7 +227,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Button3. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a17ce0318c403c057f81a1d740673a57f}\label{classInicio_1_1Registrados_a17ce0318c403c057f81a1d740673a57f}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 67 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a17ce0318c403c057f81a1d740673a57f}\label{classInicio_1_1Registrados_a17ce0318c403c057f81a1d740673a57f}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Button4@{Button4}}
 \index{Button4@{Button4}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Button4}{Button4}}
@@ -110,7 +241,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Button4. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a07302395de09db810ad8f7f096762449}\label{classInicio_1_1Registrados_a07302395de09db810ad8f7f096762449}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 85 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a07302395de09db810ad8f7f096762449}\label{classInicio_1_1Registrados_a07302395de09db810ad8f7f096762449}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Button5@{Button5}}
 \index{Button5@{Button5}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Button5}{Button5}}
@@ -120,7 +255,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Button5. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a902f9075b41d6386d17242fe32dea6e4}\label{classInicio_1_1Registrados_a902f9075b41d6386d17242fe32dea6e4}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 94 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a902f9075b41d6386d17242fe32dea6e4}\label{classInicio_1_1Registrados_a902f9075b41d6386d17242fe32dea6e4}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!form1@{form1}}
 \index{form1@{form1}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{form1}{form1}}
@@ -130,7 +269,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control form1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}\label{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 22 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}\label{classInicio_1_1Registrados_aad3adbb47738fefadfe5efa1dfb19b92}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!GridView1@{GridView1}}
 \index{GridView1@{GridView1}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{GridView1}{GridView1}}
@@ -140,7 +283,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Grid\+View1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}\label{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 139 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registrados.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}\label{classInicio_1_1Registrados_acf5a95ef87b37efcf6ad23cb0df13110}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!GridView2@{GridView2}}
 \index{GridView2@{GridView2}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{GridView2}{GridView2}}
@@ -150,7 +301,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Grid\+View2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a89cbfd8509272c14e26ee466a11b7835}\label{classInicio_1_1Registrados_a89cbfd8509272c14e26ee466a11b7835}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 103 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registrados.\+Page\+\_\+\+Load().
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a89cbfd8509272c14e26ee466a11b7835}\label{classInicio_1_1Registrados_a89cbfd8509272c14e26ee466a11b7835}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Label1@{Label1}}
 \index{Label1@{Label1}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Label1}{Label1}}
@@ -160,7 +319,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}\label{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 31 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}\label{classInicio_1_1Registrados_ab7c3cf09be993fe6a07f31881ba27159}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Label2@{Label2}}
 \index{Label2@{Label2}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Label2}{Label2}}
@@ -170,7 +333,15 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Label2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a0c8cbd7625175b47e930f927da038acc}\label{classInicio_1_1Registrados_a0c8cbd7625175b47e930f927da038acc}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 121 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+
+
+Referenciado por Inicio.\+Registrados.\+Button1\+\_\+\+Click().
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a0c8cbd7625175b47e930f927da038acc}\label{classInicio_1_1Registrados_a0c8cbd7625175b47e930f927da038acc}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!Table1@{Table1}}
 \index{Table1@{Table1}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{Table1}{Table1}}
@@ -180,7 +351,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Table1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a2ec529c41bccbe1d45b53e29aad8d1f4}\label{classInicio_1_1Registrados_a2ec529c41bccbe1d45b53e29aad8d1f4}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 130 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a2ec529c41bccbe1d45b53e29aad8d1f4}\label{classInicio_1_1Registrados_a2ec529c41bccbe1d45b53e29aad8d1f4}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!TextBox1@{TextBox1}}
 \index{TextBox1@{TextBox1}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{TextBox1}{TextBox1}}
@@ -190,7 +365,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box1. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a14706b4c2eeec2fe1d93f7d0ae00993c}\label{classInicio_1_1Registrados_a14706b4c2eeec2fe1d93f7d0ae00993c}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 49 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a14706b4c2eeec2fe1d93f7d0ae00993c}\label{classInicio_1_1Registrados_a14706b4c2eeec2fe1d93f7d0ae00993c}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!TextBox2@{TextBox2}}
 \index{TextBox2@{TextBox2}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{TextBox2}{TextBox2}}
@@ -200,7 +379,11 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 
 Control Text\+Box2. 
 
-Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. \mbox{\Hypertarget{classInicio_1_1Registrados_a42dd2c03767d9a49a113c1c4e864d790}\label{classInicio_1_1Registrados_a42dd2c03767d9a49a113c1c4e864d790}} 
+Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 58 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+\mbox{\Hypertarget{classInicio_1_1Registrados_a42dd2c03767d9a49a113c1c4e864d790}\label{classInicio_1_1Registrados_a42dd2c03767d9a49a113c1c4e864d790}} 
 \index{Inicio.Registrados@{Inicio.Registrados}!TextBox3@{TextBox3}}
 \index{TextBox3@{TextBox3}!Inicio.Registrados@{Inicio.Registrados}}
 \subsubsection{\texorpdfstring{TextBox3}{TextBox3}}
@@ -211,6 +394,10 @@ Campo generado automáticamente. Para modificarlo, mueva la declaración del cam
 Control Text\+Box3. 
 
 Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. 
+
+Definición en la línea 76 del archivo Registrados.\+aspx.\+designer.\+cs.
+
+
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 

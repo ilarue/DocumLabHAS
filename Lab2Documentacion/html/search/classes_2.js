@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['registrados',['Registrados',['../classInicio_1_1Registrados.html',1,'Inicio']]],
-  ['registro',['Registro',['../classInicio_1_1Registro.html',1,'Inicio']]]
+  ['insertartarea',['InsertarTarea',['../classInicio_1_1Profesor_1_1InsertarTarea.html',1,'Inicio::Profesor']]],
+  ['instanciartarea',['InstanciarTarea',['../classInicio_1_1Alumno_1_1InstanciarTarea.html',1,'Inicio::Alumno']]]
 ];

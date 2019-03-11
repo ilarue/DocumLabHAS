@@ -23,8 +23,9 @@
   <td id="projectlogo"><img alt="Logo" src="net-png-3-1.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lab2Documentacion
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">4</span>
    </div>
+   <div id="projectbrief">&#39;ProyectoWeb.NETparagestióndealumnosyprofesoresdeunaunivesidadimplementadoenC#&#39;</div>
   </td>
  </tr>
  </tbody>
@@ -102,7 +103,10 @@ Atributos protegidos</h2></td></tr>
 <tr class="memdesc:adbc12b387c3590f83453888d8192db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control HyperLink2.  <a href="#adbc12b387c3590f83453888d8192db9a">Más...</a><br /></td></tr>
 <tr class="separator:adbc12b387c3590f83453888d8192db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock">
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8cs_source.html#l00012">12</a> del archivo <a class="el" href="Confirmar_8aspx_8cs_source.html">Confirmar.aspx.cs</a>.</p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a47f2d7d6e91b4e672a1b954710c65daf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47f2d7d6e91b4e672a1b954710c65daf">&#9670;&nbsp;</a></span>Page_Load()</h2>
 
@@ -137,6 +141,13 @@ Atributos protegidos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8cs_source.html#l00020">20</a> del archivo <a class="el" href="Confirmar_8aspx_8cs_source.html">Confirmar.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordtype">string</span> email = Request.QueryString[<span class="stringliteral">&quot;mbr&quot;</span>];</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordtype">int</span> numconfir = Convert.ToInt32(Request.QueryString[<span class="stringliteral">&quot;numconf&quot;</span>]);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            AccesoDatos paraConectar = <span class="keyword">new</span> AccesoDatos();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            SqlConnection conexionDesdeClase = paraConectar.conexionSql();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordtype">string</span> query = <span class="stringliteral">&quot;SELECT count(*) FROM Usuarios WHERE email = &#39;&quot;</span>+email+<span class="stringliteral">&quot;&#39; AND numconfir = &quot;</span>+numconfir +<span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            SqlCommand comando = <span class="keyword">new</span> SqlCommand(query, conexionDesdeClase);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordtype">int</span> numReg = Convert.ToInt32(comando.ExecuteScalar());</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Visible = <span class="keyword">true</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (numReg &gt; 0)</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            { </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text = <span class="stringliteral">&quot;Hola, ya estás registrado en el sistema&quot;</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordtype">string</span> queryUpdate = <span class="stringliteral">&quot;UPDATE Usuarios SET confirmado=1  WHERE email=&#39;&quot;</span>+email+<span class="stringliteral">&quot;&#39; &quot;</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                SqlCommand comandoUpdate = <span class="keyword">new</span> SqlCommand(queryUpdate, conexionDesdeClase);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">try</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordtype">int</span> resultUpdate = comandoUpdate.ExecuteNonQuery();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text = <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text + <span class="stringliteral">&quot; y se ha confirmado tu registro &quot;</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }<span class="keywordflow">catch</span>(Exception ex)</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text = <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text + ex;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="classInicio_1_1Confirmar.html#aa4a4ab67f1e6964cdc3e83eb66293fa9">HyperLink1</a>.Visible = <span class="keyword">true</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">else</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <a class="code" href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Label1</a>.Text = <span class="stringliteral">&quot;No ha sido correcta la identificación&quot;</span>;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <a class="code" href="classInicio_1_1Confirmar.html#adbc12b387c3590f83453888d8192db9a">HyperLink2</a>.Visible = <span class="keyword">true</span>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            conexionDesdeClase.Close();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div><div class="ttc" id="classInicio_1_1Confirmar_html_a0422c86bf977b315fd681b02c0f5f352"><div class="ttname"><a href="classInicio_1_1Confirmar.html#a0422c86bf977b315fd681b02c0f5f352">Inicio.Confirmar.Label1</a></div><div class="ttdeci">global::System.Web.UI.WebControls.Label Label1</div><div class="ttdoc">Control Label1.</div><div class="ttdef"><b>Definition:</b> <a href="Confirmar_8aspx_8designer_8cs_source.html#l00031">Confirmar.aspx.designer.cs:31</a></div></div>
+<div class="ttc" id="classInicio_1_1Confirmar_html_aa4a4ab67f1e6964cdc3e83eb66293fa9"><div class="ttname"><a href="classInicio_1_1Confirmar.html#aa4a4ab67f1e6964cdc3e83eb66293fa9">Inicio.Confirmar.HyperLink1</a></div><div class="ttdeci">global::System.Web.UI.WebControls.HyperLink HyperLink1</div><div class="ttdoc">Control HyperLink1.</div><div class="ttdef"><b>Definition:</b> <a href="Confirmar_8aspx_8designer_8cs_source.html#l00040">Confirmar.aspx.designer.cs:40</a></div></div>
+<div class="ttc" id="classInicio_1_1Confirmar_html_adbc12b387c3590f83453888d8192db9a"><div class="ttname"><a href="classInicio_1_1Confirmar.html#adbc12b387c3590f83453888d8192db9a">Inicio.Confirmar.HyperLink2</a></div><div class="ttdeci">global::System.Web.UI.WebControls.HyperLink HyperLink2</div><div class="ttdoc">Control HyperLink2.</div><div class="ttdef"><b>Definition:</b> <a href="Confirmar_8aspx_8designer_8cs_source.html#l00049">Confirmar.aspx.designer.cs:49</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Hace referencia a <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00040">Inicio.Confirmar.HyperLink1</a>, <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00049">Inicio.Confirmar.HyperLink2</a> y <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00031">Inicio.Confirmar.Label1</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Documentación de los datos miembro</h2>
@@ -163,6 +174,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control form1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00022">22</a> del archivo <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html">Confirmar.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="aa4a4ab67f1e6964cdc3e83eb66293fa9"></a>
@@ -187,6 +200,10 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control HyperLink1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00040">40</a> del archivo <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html">Confirmar.aspx.designer.cs</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="Confirmar_8aspx_8cs_source.html#l00020">Inicio.Confirmar.Page_Load()</a>.</p>
 
 </div>
 </div>
@@ -213,6 +230,10 @@ Atributos protegidos</h2></td></tr>
 <p>Control HyperLink2. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00049">49</a> del archivo <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html">Confirmar.aspx.designer.cs</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="Confirmar_8aspx_8cs_source.html#l00020">Inicio.Confirmar.Page_Load()</a>.</p>
+
 </div>
 </div>
 <a id="a0422c86bf977b315fd681b02c0f5f352"></a>
@@ -238,16 +259,20 @@ Atributos protegidos</h2></td></tr>
 <p>Control Label1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html#l00031">31</a> del archivo <a class="el" href="Confirmar_8aspx_8designer_8cs_source.html">Confirmar.aspx.designer.cs</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="Confirmar_8aspx_8cs_source.html#l00020">Inicio.Confirmar.Page_Load()</a>.</p>
+
 </div>
 </div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li><a class="el" href="Confirmar_8aspx_8cs.html">Confirmar.aspx.cs</a></li>
-<li><a class="el" href="Confirmar_8aspx_8designer_8cs.html">Confirmar.aspx.designer.cs</a></li>
+<li><a class="el" href="Confirmar_8aspx_8cs_source.html">Confirmar.aspx.cs</a></li>
+<li><a class="el" href="Confirmar_8aspx_8designer_8cs_source.html">Confirmar.aspx.designer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Lunes, 11 de Marzo de 2019 13:34:28 para Lab2Documentacion por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.15
 </small></address>

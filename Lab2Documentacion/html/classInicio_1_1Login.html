@@ -23,8 +23,9 @@
   <td id="projectlogo"><img alt="Logo" src="net-png-3-1.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lab2Documentacion
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">4</span>
    </div>
+   <div id="projectbrief">&#39;ProyectoWeb.NETparagestióndealumnosyprofesoresdeunaunivesidadimplementadoenC#&#39;</div>
   </td>
  </tr>
  </tbody>
@@ -134,7 +135,10 @@ Atributos protegidos</h2></td></tr>
 <tr class="memdesc:ad052535d49bad44248dd771596f4a8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control Label3.  <a href="#ad052535d49bad44248dd771596f4a8af">Más...</a><br /></td></tr>
 <tr class="separator:ad052535d49bad44248dd771596f4a8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock">
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00012">12</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a4c72ae6605baac8dff22e547df892ba1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c72ae6605baac8dff22e547df892ba1">&#9670;&nbsp;</a></span>Button1_Click()</h2>
 
@@ -168,6 +172,11 @@ Atributos protegidos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00032">32</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordtype">string</span>  email = Request.Form[<span class="stringliteral">&quot;TextBox3&quot;</span>];</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordtype">string</span> pass = Request.Form[<span class="stringliteral">&quot;TextBox2&quot;</span>];</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            AccesoDatos paraConectar = <span class="keyword">new</span> AccesoDatos();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            SqlConnection conexionDesdeClase = paraConectar.conexionSql();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="comment">/*Al seleccionar si es tipo profesor o alumno no hay problema con mayusculas-minusculas</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">             porque lo toma del texto del radio button que es siempre Profesor y Alumno*/</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">string</span> queryAl = <span class="stringliteral">&quot;SELECT count(*) FROM Usuarios WHERE email =&#39;&quot;</span>+email+<span class="stringliteral">&quot;&#39; AND pass =&#39;&quot;</span>+pass+<span class="stringliteral">&quot;&#39; AND confirmado=1 AND tipo = &#39;Alumno&#39; &quot;</span>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            SqlCommand comandoAl = <span class="keyword">new</span> SqlCommand(queryAl, conexionDesdeClase);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">int</span> numRegAl = Convert.ToInt32(comandoAl.ExecuteScalar());</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">string</span> queryPr = <span class="stringliteral">&quot;SELECT count(*) FROM Usuarios WHERE email =&#39;&quot;</span> + email + <span class="stringliteral">&quot;&#39; AND pass =&#39;&quot;</span> + pass + <span class="stringliteral">&quot;&#39; AND confirmado=1 AND tipo = &#39;Profesor&#39; &quot;</span>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            SqlCommand comandoPr = <span class="keyword">new</span> SqlCommand(queryPr, conexionDesdeClase);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">int</span> numRegPr = Convert.ToInt32(comandoPr.ExecuteScalar());</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (numRegAl &gt; 0 || numRegPr &gt; 0)</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                Session[<span class="stringliteral">&quot;email&quot;</span>] = email;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">if</span>(numRegAl &gt; 0)</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    Response.Redirect(<span class="stringliteral">&quot;Alumno/Alumno.aspx&quot;</span>);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;               <span class="keywordflow">else</span> <span class="keywordflow">if</span> (numRegPr &gt; 0)</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    Response.Redirect(<span class="stringliteral">&quot;Profesor/Profesor.aspx&quot;</span>);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">else</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="classInicio_1_1Login.html#ad052535d49bad44248dd771596f4a8af">Label3</a>.Visible = <span class="keyword">true</span>;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classInicio_1_1Login.html#ad052535d49bad44248dd771596f4a8af">Label3</a>.Text = <span class="stringliteral">&quot;Lo sentimos pero este usuario no existe o la contraseña es incorrecta, o no ha sido confirmado su registro&quot;</span>;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            conexionDesdeClase.Close();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div><div class="ttc" id="classInicio_1_1Login_html_ad052535d49bad44248dd771596f4a8af"><div class="ttname"><a href="classInicio_1_1Login.html#ad052535d49bad44248dd771596f4a8af">Inicio.Login.Label3</a></div><div class="ttdeci">global::System.Web.UI.WebControls.Label Label3</div><div class="ttdoc">Control Label3.</div><div class="ttdef"><b>Definition:</b> <a href="Inicio_8aspx_8designer_8cs_source.html#l00121">Inicio.aspx.designer.cs:121</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Hace referencia a <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00121">Inicio.Login.Label3</a>.</p>
 
 </div>
 </div>
@@ -205,6 +214,8 @@ Atributos protegidos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00024">24</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a82c40c536f8833e113c9149c09b1f4de"></a>
@@ -241,6 +252,8 @@ Atributos protegidos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00014">14</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ac97e06c22c6f6ac020c4cf2eff5e48ea"></a>
@@ -277,6 +290,8 @@ Atributos protegidos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00019">19</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a332bc2333d4b1baf24c09b02f343734b"></a>
@@ -313,6 +328,8 @@ Atributos protegidos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8cs_source.html#l00067">67</a> del archivo <a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentación de los datos miembro</h2>
@@ -339,6 +356,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control Button1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00094">94</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="a52e65c9e6119c96fb9e7efb178a72214"></a>
@@ -363,6 +382,8 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control form1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00022">22</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
 
 </div>
 </div>
@@ -389,6 +410,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control HyperLink1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00103">103</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="a51395541b60da1b91a7cbbd240b4c0f3"></a>
@@ -413,6 +436,8 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control HyperLink2. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00112">112</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
 
 </div>
 </div>
@@ -439,6 +464,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control Label1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00031">31</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="a88ab7f12f1587cb3a0174d4bdc7baa39"></a>
@@ -463,6 +490,8 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control Label2. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00067">67</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
 
 </div>
 </div>
@@ -489,6 +518,10 @@ Atributos protegidos</h2></td></tr>
 <p>Control Label3. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00121">121</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="Inicio_8aspx_8cs_source.html#l00032">Inicio.Login.Button1_Click()</a>.</p>
+
 </div>
 </div>
 <a id="aebbbf7080d71a07e72e4be45e42c6795"></a>
@@ -513,6 +546,8 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control RegularExpressionValidator1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00058">58</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
 
 </div>
 </div>
@@ -539,6 +574,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control RequiredFieldValidator1. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00049">49</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="a072466936abf9e49afe63fb3874ddee6"></a>
@@ -563,6 +600,8 @@ Atributos protegidos</h2></td></tr>
 
 <p>Control RequiredFieldValidator2. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00085">85</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
 
 </div>
 </div>
@@ -589,6 +628,8 @@ Atributos protegidos</h2></td></tr>
 <p>Control TextBox2. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00076">76</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <a id="af3c872110454773d5d53d83c27e6ccb6"></a>
@@ -614,16 +655,18 @@ Atributos protegidos</h2></td></tr>
 <p>Control TextBox3. </p>
 <p>Campo generado automáticamente. Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente. </p>
 
+<p class="definition">Definición en la línea <a class="el" href="Inicio_8aspx_8designer_8cs_source.html#l00040">40</a> del archivo <a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a>.</p>
+
 </div>
 </div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li><a class="el" href="Inicio_8aspx_8cs.html">Inicio.aspx.cs</a></li>
-<li><a class="el" href="Inicio_8aspx_8designer_8cs.html">Inicio.aspx.designer.cs</a></li>
+<li><a class="el" href="Inicio_8aspx_8cs_source.html">Inicio.aspx.cs</a></li>
+<li><a class="el" href="Inicio_8aspx_8designer_8cs_source.html">Inicio.aspx.designer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Lunes, 11 de Marzo de 2019 13:34:28 para Lab2Documentacion por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.15
 </small></address>
